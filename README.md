@@ -1,4 +1,4 @@
-# portfolio-web
+# dashboard
 
 ## Project setup
 ```
