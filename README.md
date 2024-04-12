@@ -15,6 +15,15 @@ yarn run dev
 yarn build
 ```
 
+### Running in a production environment
+
+```bash
+cd /dist
+live-server
+```
+
+
+
 ## Plugins
 
 ### google foonts
