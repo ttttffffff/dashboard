@@ -77,7 +77,8 @@
     margin:auto;
     display: flex;
     height: 100%;
-    margin-top: 4rem;/* 之后添加内容之后，记得改回-4rem */
+    align-items: center;
+    margin-top: -4rem;/* 之后添加内容之后，记得改回-4rem */
 }
 .content>div{
     width: 100%;
