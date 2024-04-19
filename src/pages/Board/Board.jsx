@@ -6,19 +6,33 @@ import './Board.css'
 import { RxCross2 } from 'react-icons/rx'
 import { IoMdAdd } from 'react-icons/io'
 import AddCardModal from '../../components/AddCardModal/AddCardModal'
+import {addCardAPI,deleteCardAPI,updateCardAPI} from '../../api/board'
+import { nanoid } from 'nanoid'
+
 export default function BoardPage() {
     const { board, setBoard } = useBoard()
     const handleCardMove = (_card, source, destination) => {
-        const updatedBoard = moveCard(board, source, destination)
-        setBoard(updatedBoard)
+        const card={
+            ..._card,
+            boardID:destination.toColumnId
+        }
+        updateCardAPI(card.id,card).then(res=>{
+            if(res.data.code!==0) throw res
+            const updatedBoard = moveCard(board, source, destination)
+            setBoard(updatedBoard)
+        }).catch(err=>{
+            console.log('err in moving card:',err)
+        })
+        
     }
     const handleColumnMove = (_card, source, destination) => {
         const updatedBoard = moveColumn(board, source, destination)
         setBoard(updatedBoard)
     }
     const getColumn = (card) => {
-        const column = board.columns.filter((column) => column.cards.includes(card))
-        return column[0]
+        const bid=card.boardID
+        const column = board.columns[bid-1]
+        return column
     }
     const getGradient = (card) => {
         const column = getColumn(card)
@@ -61,8 +75,14 @@ export default function BoardPage() {
                             <span>{props.title}</span>
                             <button className='remove-button' type='button'
                                 onClick={() => {
-                                    const updatedBoard = removeCard(board, getColumn(props), props)
-                                    setBoard(updatedBoard)
+                                    deleteCardAPI(props.id).then(res=>{
+                                        if(res.data.code!==0) throw res
+                                        const updatedBoard = removeCard(board, getColumn(props), props)
+                                        setBoard(updatedBoard)
+                                    }).catch(err=>{
+                                        console.log('err in delete card:',err)
+                                    })
+                                    
                                 }} >
                                 <RxCross2 color="white" size={15} />
                             </button>
@@ -71,16 +91,29 @@ export default function BoardPage() {
                     </div>
                 )}
                 renderColumnHeader={(props) => {
+                    //这里为每一列都渲染了一个添加函数，所以会有四个props,所以在每一列中添加的时候，直接得到列id
+                    //console.log(props)
                     const [modalOpened,setModalOpened]=useState(false)
                     const handleCardAdd=(title,detail)=>{
                         const card={
-                            id:new Date().getTime(),
+                            id:nanoid(),
                             title,
-                            description:detail
+                            description:detail,
+                            boardID:props.id
                         }
-                        const updatedBoard=addCard(board,props,card)
-                        setBoard(updatedBoard)
-                        setModalOpened(false)
+                        addCardAPI(card).then(res=>{
+                            if(res.data.code!==0) throw res
+                            const updatedBoard=addCard(board,props,card)
+                            setBoard(updatedBoard)
+                            setModalOpened(false)
+                        }).catch(err=>{
+                            console.log('err in add card: ',err)
+                            setModalOpened(false)
+                        })
+
+                        // const updatedBoard=addCard(board,props,card)
+                        // setBoard(updatedBoard)
+                        
                     }
                     return (
                         <div className='column-header'>

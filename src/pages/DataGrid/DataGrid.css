@@ -8,3 +8,14 @@
 .MuiTableRow-root,.MuiTableCell-root{
     border: none!important;
 }
+.createButton{
+    /* width: 6rem; */
+    /* align-self: flex-end; */
+    /* margin-top: 1.5rem; */
+    background: var(--orange-gradient);
+    border:none;
+    /* padding: 10px; */
+    color:black;
+    cursor: pointer;
+    border-radius: 8px;
+}

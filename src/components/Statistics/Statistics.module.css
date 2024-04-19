@@ -35,13 +35,13 @@
 .arrowIcon{
     width: 2rem;
     height: 2rem;
-    background: var(--orange);
+    /* background: var(--orange); */
     border-radius: 5px;
   
 }
 .arrowIcon >svg{
     width: 2rem;
     height: 2rem;
-    fill: black;
+    fill: var(--orange);
 
 }

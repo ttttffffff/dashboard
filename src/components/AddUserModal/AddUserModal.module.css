@@ -1,0 +1,31 @@
+.container {
+    background: 'rgba(58,58,58)';
+    padding: '20px';
+    width: '100%';
+    top: '-3rem';
+    height: 'fit-content';
+    max-width: '40rem';
+}
+.MuiPaper-root-MuiDialog-paper{
+    width: 30% !important;
+}
+.cancelButton{
+    width: 6rem;
+    align-self: flex-end;
+    margin-top: 1.5rem;
+    border:none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.saveButton{
+    width: 6rem;
+    align-self: flex-end;
+    margin-top: 1.5rem;
+    background: var(--orange-gradient);
+    border:none;
+    padding: 10px;
+    color:white;
+    cursor: pointer;
+    border-radius: 8px;
+}

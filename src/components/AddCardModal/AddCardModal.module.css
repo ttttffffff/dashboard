@@ -3,6 +3,8 @@
     width: 100%;
     flex-direction: column;
     color: white;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 .container>div{
     margin-top: 1.2rem;
@@ -28,6 +30,7 @@
     border-radius: 8px;
     resize: none;
 }
+
 .saveButton{
     width: 6rem;
     align-self: flex-end;
@@ -42,4 +45,11 @@
 .saveButton:disabled{
     background: grey;
     cursor: not-allowed;
+}
+.text {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-text-fill-color: #fff;
+    caret-color: #fff;
+    border-radius: inherit;
 }
