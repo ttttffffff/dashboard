@@ -1,4 +1,4 @@
-// import {axios} from './basic'
+// import axios from './basic'
 import axios from 'axios'
 export const UserURL="/api/users"
 //获取所有用户

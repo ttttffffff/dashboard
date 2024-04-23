@@ -64,6 +64,9 @@
     height: 50px;
     width: 50px;
 }
+.profile>img:hover{
+    cursor: pointer;
+}
 .detail{
     display: flex;
     flex-direction: column;

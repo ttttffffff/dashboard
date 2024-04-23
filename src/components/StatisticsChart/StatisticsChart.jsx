@@ -5,7 +5,7 @@ import { Category } from '@mui/icons-material'
 import { getWeather } from '../../api/weather'
 import { TiWeatherCloudy, TiWeatherDownpour, TiWeatherSnow, TiWeatherStormy, TiWeatherSunny, TiWeatherWindy, TiWeatherWindyCloudy } from "react-icons/ti";
 
-export default function StatisticsChart({ onchangeWeather }) {
+export default function StatisticsChart() {
     const [xdata, setXdata] = useState(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
     const [ymax, setYmax] = useState([28000, 19000, 32000, 18000, 41000, 30000, 26000])
     const [ymin, setYmin] = useState([])
@@ -140,21 +140,14 @@ export default function StatisticsChart({ onchangeWeather }) {
     }
     useMemo(() => {
         getWeather('114.13', '30.68').then(res => {
-            const tempMax = []
-            const tempMin = []
+           
+           
             const weather = []
-            const date = []
-            res.data.dataseries.map(day => {
-                date.push(number2date(day.date))
-                tempMax.push(day.temp2m.max)
-                tempMin.push(day.temp2m.min)
-                weather.push(day.weather)
-            })
-            setXdata(date)
-            setYmax(tempMax)
-            setYmin(tempMin)
-            setWeather_7(weather)
-            onchangeWeather(res.data.dataseries[0].weather)
+           
+            
+            setXdata(res.data.daily.time)
+            setYmax(res.data.daily.temperature_2m_max)
+            setYmin(res.data.daily.temperature_2m_min)
         })
     }, [])
     return (

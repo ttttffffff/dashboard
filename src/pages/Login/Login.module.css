@@ -1,0 +1,85 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/login-bg.png');
+    background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+    
+}
+.formcon{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 99, 103, 58%);
+    padding: 20px 30px;
+    border-radius: 15px;
+    border:rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+.formcon:hover{
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.6);
+    background-color: rgba(96, 99, 103, 0.699);
+}
+.formcon>span{
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 4.2rem;
+
+}
+.formcon>form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+
+}
+.text{
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 30rem;
+    height: 4rem;
+    color:white;
+    background:rgba(0, 0, 0, 0.514);
+    border:3px solid #778899;
+    border-radius: 10px;
+
+}
+.loginButton{
+    width: 10rem;
+    height: 3.3rem;
+    /* align-self: flex-end; */
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    background: var(--orange-gradient);
+    border:none;
+    padding: 10px;
+    color:white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+.signupButton{
+    width: 10rem;
+    height: 3.3rem;
+    /* align-self: flex-end; */
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.71);
+    border:none;
+    padding: 10px;
+    color:var(--orange);
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+}

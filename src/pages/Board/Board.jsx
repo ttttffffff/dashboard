@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,useMemo} from 'react'
 import Board, { moveCard, moveColumn, removeCard, addCard } from "@asseinfo/react-kanban"
 import "@asseinfo/react-kanban/dist/styles.css"
 import useBoard from '../../store/Board'
@@ -30,9 +30,8 @@ export default function BoardPage() {
         setBoard(updatedBoard)
     }
     const getColumn = (card) => {
-        const bid=card.boardID
-        const column = board.columns[bid-1]
-        return column
+        const column=board.columns.filter((column)=>column.cards.includes(card))
+        return column[0]
     }
     const getGradient = (card) => {
         const column = getColumn(card)
